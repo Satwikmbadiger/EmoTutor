@@ -1,0 +1,10 @@
+flask
+flask-cors
+PyPDF2
+requests
+firebase-admin
+opencv-python
+fer
+tensorflow
+groq
+grpcio-status<1.70.0
