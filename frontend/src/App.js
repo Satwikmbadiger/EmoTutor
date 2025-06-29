@@ -9,6 +9,8 @@ import Login from "./Login";
 import Home from "./Home";
 import './App.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function DraggableWebcam({ emotion, onEmotionDetected, visible, onClose }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
@@ -93,7 +95,7 @@ function DraggableWebcam({ emotion, onEmotionDetected, visible, onClose }) {
       const formData = new FormData();
       formData.append("image", blob, "capture.jpg");
 
-      const res = await fetch("/api/detect-emotion", {
+      const res = await fetch(`${API_URL}/api/detect-emotion`, {
         method: "POST",
         body: formData,
       });
@@ -193,7 +195,7 @@ function Chat() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("/api/upload-pdf", {
+      const res = await fetch(`${API_URL}/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
@@ -213,7 +215,7 @@ function Chat() {
     setResponse("");
 
     try {
-      const res = await fetch("/api/ask", {
+      const res = await fetch(`${API_URL}/api/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question, emotion }),
