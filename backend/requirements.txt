@@ -5,6 +5,6 @@ requests
 firebase-admin
 opencv-python
 fer
-tensorflow==2.19.0
+tensorflow==2.18.0
 groq
 grpcio-status<1.70.0
