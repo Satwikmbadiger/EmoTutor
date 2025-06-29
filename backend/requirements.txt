@@ -9,3 +9,4 @@ tensorflow==2.18.0
 groq
 grpcio-status<1.70.0
 gunicorn
+moviepy==1.0.3
