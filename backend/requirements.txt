@@ -10,3 +10,4 @@ groq
 grpcio-status<1.70.0
 gunicorn
 moviepy==1.0.3
+dotenv
