@@ -144,5 +144,13 @@ Provide a helpful, easy to understand answer:
     return jsonify({"answer": answer})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+    # Get the port from the environment (render will set it)
+    port = int(os.environ.get("PORT", 10000))
+
+    # Log the port for debugging
+    logging.basicConfig(level=logging.INFO)
+    logging.info(f"Starting Flask app on port {port}")
+
+    # Run Flask app on 0.0.0.0 to make it accessible to the outside world
+    app.run(host="0.0.0.0", port=port)
 
