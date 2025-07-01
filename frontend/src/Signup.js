@@ -45,7 +45,7 @@ export default function Signup() {
         <div className="card-body">
           <div className="auth-header">
             <h1 className="auth-title">Create Account</h1>
-            <p className="auth-subtitle">Join TeachAI + Emote to get started</p>
+            <p className="auth-subtitle">Join EmoTutor to get started</p>
           </div>
           
           {error && <div className="alert alert-error">{error}</div>}

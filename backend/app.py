@@ -16,7 +16,21 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+# Restrict CORS in production
+if os.environ.get("FLASK_ENV") == "production":
+    CORS(app, origins=[os.environ.get("FRONTEND_URL", "https://yourdomain.com")], supports_credentials=True)
+else:
+    CORS(app)
+
+# Add security headers
+@app.after_request
+def set_security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "no-referrer-when-downgrade"
+    response.headers["Content-Security-Policy"] = "default-src 'self'"
+    return response
 
 # Initialize Firebase if config exists
 cred_path = os.getenv("FIREBASE_CRED_PATH", "firebase-key.json")
@@ -99,9 +113,6 @@ def ask():
     question = data.get("question")
     emotion = data.get("emotion", "neutral")
 
-    if not question or not docs_text:
-        return jsonify({"error": "No question or documents available"}), 400
-
     emotion_prompts = {
         "happy": "Answer enthusiastically and encourage learning.",
         "confused": "Explain clearly and break down concepts.",
@@ -122,7 +133,7 @@ Student's current emotion: {emotion}.
 
 Instruction: {emotion_prompts.get(emotion, emotion_prompts['neutral'])}
 
-Provide a helpful, easy to understand answer:
+Provide a helpful, easy to understand answer in detailed steps.:
 """
 
     try:
@@ -144,13 +155,6 @@ Provide a helpful, easy to understand answer:
     return jsonify({"answer": answer})
 
 if __name__ == "__main__":
-    # Get the port from the environment (render will set it)
     port = int(os.environ.get("PORT", 10000))
-
-    # Log the port for debugging
-    logging.basicConfig(level=logging.INFO)
-    logging.info(f"Starting Flask app on port {port}")
-
-    # Run Flask app on 0.0.0.0 to make it accessible to the outside world
     app.run(host="0.0.0.0", port=port)
 

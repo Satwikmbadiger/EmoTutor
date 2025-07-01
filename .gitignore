@@ -28,3 +28,9 @@ yarn-error.log*
 
 #environment variables
 .env
+*.env.*
+firebase-key.json
+build
+__pycache__/
+*.pyc
+instance/

@@ -1,3 +1,7 @@
 node_modules
 firebase.js
 .env
+build
+*.env.*
+*.env
+firebase-key.json

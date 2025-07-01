@@ -35,7 +35,7 @@ export default function Login() {
         <div className="card-body">
           <div className="auth-header">
             <h1 className="auth-title">Welcome Back</h1>
-            <p className="auth-subtitle">Sign in to continue to TeachAI + Emote</p>
+            <p className="auth-subtitle">Sign in to continue to EmoTutor</p>
           </div>
           
           {error && <div className="alert alert-error">{error}</div>}
