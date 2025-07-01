@@ -1,7 +1,8 @@
-node_modules
-firebase.js
+# Ignore node_modules and build output
+node_modules/
+build/
 .env
-build
 *.env.*
 *.env
+firebase.js
 firebase-key.json

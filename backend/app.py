@@ -18,7 +18,8 @@ load_dotenv()
 app = Flask(__name__)
 # Restrict CORS in production
 if os.environ.get("FLASK_ENV") == "production":
-    CORS(app, origins=[os.environ.get("FRONTEND_URL", "https://yourdomain.com")], supports_credentials=True)
+    # Allow Vercel frontend domain (set FRONTEND_URL to your Vercel domain, e.g. https://emology-frontend.vercel.app)
+    CORS(app, origins=[os.environ.get("FRONTEND_URL", "https://emology-frontend.vercel.app")], supports_credentials=True)
 else:
     CORS(app)
 
@@ -144,6 +145,7 @@ Provide a helpful, easy to understand answer in detailed steps.:
         answer = chat_completion.choices[0].message.content
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
     if db:
         db.collection("questions").add({

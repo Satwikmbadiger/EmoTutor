@@ -88,29 +88,7 @@ fetch('/api/ask', {
 - **Smooth Animations**: Professional transitions and effects
 - **Accessibility**: Screen reader friendly with proper ARIA labels
 
-## 🚀 Deployment
 
-### Frontend Deployment (Vercel/Netlify)
-```bash
-cd frontend
-npm run build
-# Deploy the build folder to your hosting platform
-```
-
-### Backend Deployment (Heroku/Railway)
-```bash
-cd backend
-# Add Procfile for Heroku
-# Configure environment variables
-# Deploy to your hosting platform
-```
-
-### Environment Variables for Production
-```env
-OPENAI_API_KEY=your_production_openai_key
-FIREBASE_PROJECT_ID=your_firebase_project_id
-FLASK_ENV=production
-```
 
 ## 🤝 Contributing
 
@@ -155,6 +133,6 @@ If you encounter any issues or have questions:
 
 ---
 
-**Made with ❤️ by the TeachAI + Emote Team**
+**Made with ❤️ by the EmoTutor Team**
 
 *Empowering education through emotion-aware AI technology*

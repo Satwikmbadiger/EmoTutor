@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  backend:
+    image: satwikmbadiger/emotutor-backend:latest
+    env_file:
+      - ./backend/.env
+    ports:
+      - "10000:10000"
+    restart: unless-stopped
+  frontend:
+    image: satwikmbadiger/emotutor-frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

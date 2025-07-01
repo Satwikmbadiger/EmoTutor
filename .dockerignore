@@ -1,0 +1,21 @@
+# Node and Python artifacts
+node_modules
+*.log
+*.pyc
+__pycache__/
+.venv
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Build output
+build
+dist
+
+# Secrets
+firebase-key.json
